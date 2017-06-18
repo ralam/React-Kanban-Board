@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.board, #root, .lane, #root > [data-reactroot] {
+    height: 100%;
+}
+
+.lane {
+    width: 300px;
+    float: left;
+    text-align: center;
+}
+
+.card {
+    width: 90%;
+    padding: 10px;
+    margin: 10px auto;
+    position: relative;
+}
