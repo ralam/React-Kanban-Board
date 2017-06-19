@@ -19,6 +19,21 @@ class Board extends React.Component{
         ]}
       ]
     }
+    this.addCard = this.addCard.bind(this);
+    this.removeCard = this.removeCard.bind(this);
+  }
+
+  addCard(cardTitle, cardDescription, laneIdx) {
+    let statuses = this.state.statuses;
+    statuses[laneIdx].cards.push({title: cardTitle, description: cardDescription});
+    this.setState({statuses});
+  }
+
+  removeCard(laneIdx, cardIdx) {
+    console.log(cardIdx)
+    let statuses = this.state.statuses;
+    statuses[laneIdx].cards = statuses[laneIdx].cards.filter((card, idx) => idx !== cardIdx);
+    this.setState({statuses});
   }
 
   render() {
@@ -27,6 +42,9 @@ class Board extends React.Component{
         title={status.title}
         cards={status.cards}
         key={idx}
+        laneIdx={idx}
+        addCard={this.addCard}
+        removeCard={this.removeCard}
         />
     })
     return(
