@@ -1,4 +1,5 @@
 import React from 'react';
+import MoveButtons from './moveButtons';
 
 class Card extends React.Component{
   constructor(props) {
@@ -12,6 +13,7 @@ class Card extends React.Component{
     this.saveCard = this.saveCard.bind(this);
     this.toggleEditable = this.toggleEditable.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
+    this.moveCard = this.moveCard.bind(this);
   }
 
   deleteCard(e) {
@@ -19,7 +21,7 @@ class Card extends React.Component{
   }
 
   saveCard(e) {
-    this.props.updateCard(this.state.title, this.state.description, this.props.cardIdx);
+    this.props.updateCard(this.state.title, this.state.description);
     this.toggleEditable();
   }
 
@@ -33,6 +35,10 @@ class Card extends React.Component{
 
   handleUpdate(name, e) {
     this.setState({[name]: e.currentTarget.value});
+  }
+
+  moveCard(direction) {
+    this.props.moveCard(direction, this.props.cardIdx);
   }
 
   render() {
@@ -62,6 +68,10 @@ class Card extends React.Component{
           </div>
           <div>{this.props.title}</div>
           <div>{this.props.description}</div>
+          <MoveButtons
+            moveableDirections={this.props.moveableDirections}
+            moveCard={this.moveCard}
+            />
         </div>
       );
     }

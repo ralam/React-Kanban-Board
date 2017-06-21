@@ -8,6 +8,7 @@ class Lane extends React.Component{
     this.addCard = this.addCard.bind(this);
     this.removeCard = this.removeCard.bind(this);
     this.updateCard = this.updateCard.bind(this);
+    this.moveCard = this.moveCard.bind(this);
   }
 
   addCard(title, description) {
@@ -22,6 +23,11 @@ class Lane extends React.Component{
     this.props.updateCard(title, description, this.props.laneIdx, cardIdx);
   }
 
+  moveCard(direction, cardIdx) {
+    let newLaneIdx = this.props.laneIdx + direction;
+    this.props.moveCard(this.props.laneIdx, newLaneIdx, cardIdx);
+  }
+
   render() {
     let cards = this.props.cards.map((card, idx) => {
       return <Card
@@ -31,6 +37,8 @@ class Lane extends React.Component{
         cardIdx={idx}
         removeCard={this.removeCard}
         updateCard={this.updateCard}
+        moveCard={this.moveCard}
+        moveableDirections={this.props.cardMoveableDirections}
         />
     });
     return(

@@ -36,6 +36,6 @@ html, body {
     border: lightskyblue dashed 1px;
 }
 
-.card--placeholder:hover, .icon:hover {
+.card--placeholder:hover, .icon:hover, .btn--direction:hover {
     cursor: pointer;
 }

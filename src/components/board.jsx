@@ -22,6 +22,7 @@ class Board extends React.Component{
     this.addCard = this.addCard.bind(this);
     this.removeCard = this.removeCard.bind(this);
     this.updateCard = this.updateCard.bind(this);
+    this.moveCard = this.moveCard.bind(this);
   }
 
   addCard(cardTitle, cardDescription, laneIdx) {
@@ -42,8 +43,23 @@ class Board extends React.Component{
     this.setState({statuses});
   }
 
+  moveCard(oldLaneIdx, newLaneIdx, cardIdx) {
+    let statuses = this.state.statuses;
+    if(newLaneIdx < 0 || newLaneIdx > statuses.length - 1) {
+      console.log('cannot move card, no lane exists');
+    } else {
+      let card = statuses[oldLaneIdx].cards[cardIdx];
+      statuses[oldLaneIdx].cards = statuses[oldLaneIdx].cards.filter((card, idx) => idx !== cardIdx);
+      statuses[newLaneIdx].cards.push(card);
+      this.setState({statuses});
+    }
+  }
+
   render() {
-    let lanes = this.state.statuses.map((status, idx) => {
+    let lanes = this.state.statuses.map((status, idx, statuses) => {
+      let cardMoveableDirections = {};
+      cardMoveableDirections['left'] = idx === 0 ? false : true;
+      cardMoveableDirections['right'] = idx === statuses.length - 1 ? false : true;
       return <Lane
         title={status.title}
         cards={status.cards}
@@ -52,6 +68,8 @@ class Board extends React.Component{
         addCard={this.addCard}
         removeCard={this.removeCard}
         updateCard={this.updateCard}
+        moveCard={this.moveCard}
+        cardMoveableDirections={cardMoveableDirections}
         />
     })
     return(
