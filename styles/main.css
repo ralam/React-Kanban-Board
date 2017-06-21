@@ -18,4 +18,13 @@ html, body {
     padding: 10px;
     margin: 10px auto;
     position: relative;
+    border: black solid 1px;
+}
+
+.card.card--placeholder {
+    border: lightskyblue dashed 1px;
+}
+
+.card--placeholder:hover {
+    cursor: pointer;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './card';
+import CardPlaceholder from './cardPlaceholder';
 
 class Lane extends React.Component{
   constructor(props) {
@@ -30,6 +31,7 @@ class Lane extends React.Component{
       <div className='lane'>
         <div>{this.props.title}</div>
         {cards}
+        <CardPlaceholder addCard={this.addCard} />
       </div>
     )
   }
