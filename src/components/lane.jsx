@@ -7,6 +7,7 @@ class Lane extends React.Component{
     super(props);
     this.addCard = this.addCard.bind(this);
     this.removeCard = this.removeCard.bind(this);
+    this.updateCard = this.updateCard.bind(this);
   }
 
   addCard(title, description) {
@@ -17,6 +18,10 @@ class Lane extends React.Component{
     this.props.removeCard(this.props.laneIdx, cardIdx);
   }
 
+  updateCard(title, description, cardIdx) {
+    this.props.updateCard(title, description, this.props.laneIdx, cardIdx);
+  }
+
   render() {
     let cards = this.props.cards.map((card, idx) => {
       return <Card
@@ -25,6 +30,7 @@ class Lane extends React.Component{
         key={idx}
         cardIdx={idx}
         removeCard={this.removeCard}
+        updateCard={this.updateCard}
         />
     });
     return(

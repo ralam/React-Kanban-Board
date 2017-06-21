@@ -21,6 +21,7 @@ class Board extends React.Component{
     }
     this.addCard = this.addCard.bind(this);
     this.removeCard = this.removeCard.bind(this);
+    this.updateCard = this.updateCard.bind(this);
   }
 
   addCard(cardTitle, cardDescription, laneIdx) {
@@ -30,9 +31,14 @@ class Board extends React.Component{
   }
 
   removeCard(laneIdx, cardIdx) {
-    console.log(cardIdx)
     let statuses = this.state.statuses;
     statuses[laneIdx].cards = statuses[laneIdx].cards.filter((card, idx) => idx !== cardIdx);
+    this.setState({statuses});
+  }
+
+  updateCard(cardTitle, cardDescription, laneIdx, cardIdx) {
+    let statuses = this.state.statuses;
+    statuses[laneIdx].cards[cardIdx] = {title: cardTitle, description: cardDescription};
     this.setState({statuses});
   }
 
@@ -45,6 +51,7 @@ class Board extends React.Component{
         laneIdx={idx}
         addCard={this.addCard}
         removeCard={this.removeCard}
+        updateCard={this.updateCard}
         />
     })
     return(
