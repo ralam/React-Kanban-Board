@@ -1,5 +1,7 @@
 import React from 'react';
 import Lane from './lane';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 class Board extends React.Component{
   constructor(props) {
@@ -81,4 +83,4 @@ class Board extends React.Component{
   }
 }
 
-export default Board;
+export default DragDropContext(HTML5Backend)(Board);

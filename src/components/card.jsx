@@ -1,5 +1,24 @@
 import React from 'react';
 import MoveButtons from './moveButtons';
+import PropTypes from 'prop-types';
+import { ItemTypes } from '../constants';
+import { DragSource } from 'react-dnd';
+
+var cardSource = {
+  beginDrag(props) {
+    return {
+      cardIdx: props.cardIdx,
+      laneIdx: props.laneIdx
+    };
+  }
+}
+
+function collect(connect, monitor) {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  }
+}
 
 class Card extends React.Component{
   constructor(props) {
@@ -42,8 +61,9 @@ class Card extends React.Component{
   }
 
   render() {
+    const { connectDragSource, isDragging } = this.props;
     if(this.state.editable) {
-      return (
+      return connectDragSource(
         <div className='card'>
           <input
             type='text'
@@ -60,7 +80,7 @@ class Card extends React.Component{
         </div>
       )
     } else {
-      return(
+      return connectDragSource(
         <div className='card'>
           <div className='card-icon-container'>
             <div className='icon' onClick={this.deleteCard}>x</div>
@@ -78,4 +98,10 @@ class Card extends React.Component{
   }
 }
 
-export default Card;
+Card.propTypes = {
+  connectDragSource: PropTypes.func.isRequired,
+  isDragging: PropTypes.bool.isRequired
+}
+
+// export default Card;
+export default DragSource(ItemTypes.CARD, cardSource, collect)(Card);
