@@ -2,9 +2,10 @@ import React from 'react';
 import MoveButtons from './moveButtons';
 import PropTypes from 'prop-types';
 import { ItemTypes } from '../constants';
-import { DragSource } from 'react-dnd';
+import { DragSource, DropTarget } from 'react-dnd';
+import { findDOMNode } from 'react-dom';
 
-var cardSource = {
+const cardSource = {
   beginDrag(props) {
     return {
       cardIdx: props.cardIdx,
@@ -13,10 +14,25 @@ var cardSource = {
   }
 }
 
-function collect(connect, monitor) {
+const cardTarget = {
+  drop(props, monitor, component) {
+    const { cardIdx: dragIdx, laneIdx } = monitor.getItem();
+    const hoverIdx = props.cardIdx;
+
+    props.moveCard(laneIdx, dragIdx, hoverIdx);
+  }
+}
+
+function dragCollect(connect, monitor) {
   return {
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging()
+  }
+}
+
+function dropCollect(connect, monitor) {
+  return {
+    connectDropTarget: connect.dropTarget()
   }
 }
 
@@ -61,7 +77,7 @@ class Card extends React.Component{
   }
 
   render() {
-    const { connectDragSource, isDragging } = this.props;
+    const { connectDragSource, isDragging, connectDropTarget } = this.props;
     if(this.state.editable) {
       return connectDragSource(
         <div className='card'>
@@ -80,7 +96,7 @@ class Card extends React.Component{
         </div>
       )
     } else {
-      return connectDragSource(
+      return connectDragSource(connectDropTarget(
         <div className='card'>
           <div className='card-icon-container'>
             <div className='icon' onClick={this.deleteCard}>x</div>
@@ -93,7 +109,7 @@ class Card extends React.Component{
             moveCard={this.moveCard}
             />
         </div>
-      );
+      ));
     }
   }
 }
@@ -103,5 +119,6 @@ Card.propTypes = {
   isDragging: PropTypes.bool.isRequired
 }
 
-// export default Card;
-export default DragSource(ItemTypes.CARD, cardSource, collect)(Card);
+Card = DropTarget(ItemTypes.CARD, cardTarget, dropCollect)(Card);
+Card = DragSource(ItemTypes.CARD, cardSource, dragCollect)(Card);
+export default Card;

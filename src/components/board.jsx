@@ -45,16 +45,17 @@ class Board extends React.Component{
     this.setState({statuses});
   }
 
-  moveCard(oldLaneIdx, newLaneIdx, cardIdx) {
+  moveCard(oldLaneIdx, newLaneIdx, oldCardIdx, newCardIdx) {
     let statuses = this.state.statuses;
-    if(newLaneIdx < 0 || newLaneIdx > statuses.length - 1) {
-      console.log('cannot move card, no lane exists');
-    } else {
-      let card = statuses[oldLaneIdx].cards[cardIdx];
-      statuses[oldLaneIdx].cards = statuses[oldLaneIdx].cards.filter((card, idx) => idx !== cardIdx);
-      statuses[newLaneIdx].cards.push(card);
-      this.setState({statuses});
+    // move card to the end if no new lane index
+    if(typeof newCardIdx === 'undefined') {
+      newCardIdx = statuses[newLaneIdx].cards.length;
     }
+    // get card from old position
+    const movingCard = statuses[oldLaneIdx].cards.splice(oldCardIdx, 1)[0];
+    // move card to new position
+    statuses[newLaneIdx].cards.splice(newCardIdx, 0, movingCard);
+    this.setState({statuses});
   }
 
   render() {

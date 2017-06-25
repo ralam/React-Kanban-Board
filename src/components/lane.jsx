@@ -6,7 +6,7 @@ import { findDOMNode } from 'react-dom';
 import { ItemTypes } from '../constants';
 
 const cardTarget = {
-  drop(props, monitor) {
+  drop(props, monitor, component) {
     if(monitor.didDrop()) {
       return;
     }
@@ -49,9 +49,8 @@ class Lane extends React.Component{
     this.props.updateCard(title, description, this.props.laneIdx, cardIdx);
   }
 
-  moveCard(direction, cardIdx) {
-    let newLaneIdx = this.props.laneIdx + direction;
-    this.props.moveCard(this.props.laneIdx, newLaneIdx, cardIdx);
+  moveCard(oldLaneIdx, oldCardIdx, newCardIdx) {
+    this.props.moveCard(oldLaneIdx, this.props.laneIdx, oldCardIdx, newCardIdx);
   }
 
   render() {
@@ -80,3 +79,4 @@ class Lane extends React.Component{
 }
 
 export default DropTarget(ItemTypes.CARD, cardTarget, collect)(Lane);
+// export default Lane;
