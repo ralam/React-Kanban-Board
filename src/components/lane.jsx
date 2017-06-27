@@ -70,7 +70,7 @@ class Lane extends React.Component{
     });
     return connectDropTarget(
       <div className='lane'>
-        <div>{this.props.title}</div>
+        <h2>{this.props.title}</h2>
         {cards}
         <CardPlaceholder addCard={this.addCard} />
       </div>

@@ -13,7 +13,12 @@ class Board extends React.Component{
           {title: 'Card 1', description: 'some stuff'},
           {title: 'Card 2', description: 'more stuff'}
         ]},
+        {title: 'Design', cards: [
+          {title: 'Card 1', description: 'some stuff'},
+          {title: 'Card 2', description: 'more stuff'}
+        ]},
         {title: 'In Progress', cards: [{title: 'Card 3', description: 'lorem ipsum'}]},
+        {title: 'Testing', cards: [{title: 'Card 3', description: 'lorem ipsum'}]},
         {title: 'Done', cards: [
           {title: 'Card 4', description: 'bananas'},
           {title: 'Card 5', description: 'oranges'},
@@ -47,7 +52,7 @@ class Board extends React.Component{
 
   moveCard(oldLaneIdx, newLaneIdx, oldCardIdx, newCardIdx) {
     let statuses = this.state.statuses;
-    // move card to the end if no new lane index
+    // move card to the end if no new lane index    
     if(typeof newCardIdx === 'undefined') {
       newCardIdx = statuses[newLaneIdx].cards.length;
     }
@@ -78,7 +83,11 @@ class Board extends React.Component{
     return(
       <div className='board'>
         <h1>{this.state.title}</h1>
-        {lanes}
+        <div className='box'>
+          <div className='lane-container'>
+            {lanes}
+          </div>
+        </div>
       </div>
     )
   }
