@@ -65,7 +65,6 @@ class Lane extends React.Component{
         removeCard={this.removeCard}
         updateCard={this.updateCard}
         moveCard={this.moveCard}
-        moveableDirections={this.props.cardMoveableDirections}
         />
     });
     return connectDropTarget(

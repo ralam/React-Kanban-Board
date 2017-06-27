@@ -1,6 +1,4 @@
 import React from 'react';
-import MoveButtons from './moveButtons';
-import PropTypes from 'prop-types';
 import { ItemTypes } from '../constants';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
@@ -104,19 +102,10 @@ class Card extends React.Component{
           </div>
           <div>{this.props.title}</div>
           <div>{this.props.description}</div>
-          <MoveButtons
-            moveableDirections={this.props.moveableDirections}
-            moveCard={this.moveCard}
-            />
         </div>
       ));
     }
   }
-}
-
-Card.propTypes = {
-  connectDragSource: PropTypes.func.isRequired,
-  isDragging: PropTypes.bool.isRequired
 }
 
 Card = DropTarget(ItemTypes.CARD, cardTarget, dropCollect)(Card);

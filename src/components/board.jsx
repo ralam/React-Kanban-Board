@@ -65,9 +65,6 @@ class Board extends React.Component{
 
   render() {
     let lanes = this.state.statuses.map((status, idx, statuses) => {
-      let cardMoveableDirections = {};
-      cardMoveableDirections['left'] = idx === 0 ? false : true;
-      cardMoveableDirections['right'] = idx === statuses.length - 1 ? false : true;
       return <Lane
         title={status.title}
         cards={status.cards}
@@ -77,7 +74,6 @@ class Board extends React.Component{
         removeCard={this.removeCard}
         updateCard={this.updateCard}
         moveCard={this.moveCard}
-        cardMoveableDirections={cardMoveableDirections}
         />
     })
     return(
