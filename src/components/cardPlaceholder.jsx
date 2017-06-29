@@ -29,27 +29,24 @@ class CardPlaceholder extends React.Component{
   render(){
     if(this.state.active) {
       return(
-        <div className='card card--placeholder'>
-          <label>Title:
-            <input
-              type='text'
-              value={this.state.cardTitle}
-              onChange={this.updateText.bind(null, 'cardTitle')}
-            />
-          </label>
-          <label>Description:
-            <input
-              type='text'
-              value={this.state.cardDescription}
-              onChange={this.updateText.bind(null, 'cardDescription')}
-            />
-          </label>
+        <div className='card card--placeholder card--placeholder-active'>
+          <input
+            type='text'
+            placeholder='Title'
+            value={this.state.cardTitle}
+            onChange={this.updateText.bind(null, 'cardTitle')}
+          />
+          <textarea
+            placeholder='Description'
+            value={this.state.cardDescription}
+            onChange={this.updateText.bind(null, 'cardDescription')}
+          />
           <button onClick={this.saveCard}>Save</button>
           <button onClick={this.toggleForm}>Cancel</button>
         </div>
       );
     } else {
-      return <div className='card card--placeholder' onClick={this.toggleForm}>+</div>
+      return <div className='card card--placeholder card--placeholder-inactive' onClick={this.toggleForm}>+</div>
     }
   }
 

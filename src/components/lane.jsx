@@ -78,4 +78,3 @@ class Lane extends React.Component{
 }
 
 export default DropTarget(ItemTypes.CARD, cardTarget, collect)(Lane);
-// export default Lane;

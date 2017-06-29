@@ -1,11 +1,8 @@
-body {
-    margin: 0px;
-}
-
 html, body {
     height: 100%;
     box-sizing: border-box;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0px;
 }
 
 .board, #root, #root > [data-reactroot] {
@@ -13,6 +10,8 @@ html, body {
 }
 
 .board {
+    display: flex;
+    flex-flow: column;
     width: 100%;
 }
 
@@ -20,20 +19,28 @@ html, body {
     margin-left: 25px;
 }
 
-.box {
+.header {
+    padding: 5px;
+}
+
+.content {
     flex: 1;
     display: flex;
     overflow-x: auto;
     overflow-y: none;
-    height: 80%;
     background-color: #1a75ff;
     padding: 10px;
+}
+
+.credit {
+    background-color: #1a75ff;
+    position: absolute;
+    bottom: 0;
 }
 
 .lane-container {
     min-height: min-content;
     display: flex;
-
 }
 
 .lane {
@@ -46,8 +53,7 @@ html, body {
 }
 
 .card {
-    width: 80%;
-    padding: 10px;
+    width: 90%;
     margin: 10px auto;
     position: relative;
     border-radius: 3px;
@@ -56,20 +62,84 @@ html, body {
 
 .card-icon-container {
     position: absolute;
-    top: 0px;
-    right: 3px;
+    top: 5px;
+    right: 2px;
 }
 
 .icon {
+    background-origin: content-box;
+    background-repeat: no-repeat;
     float: right;
     padding: 0px 3px;
+    height: 16px;
+    width: 16px;
 }
 
-.card.card--placeholder {
-    border: lightskyblue dashed 1px;
+.icon--edit {
+    background-image: url("../assets/edit.png");
+}
+
+.icon--delete {
+    background-image: url("../assets/delete.png");
+}
+
+.card--placeholder {
+    box-sizing: border-box;
+    border: lightskyblue dashed 3px;
     background-color: #ffffff;
+    padding: 10px 0px;;
 }
 
-.card--placeholder:hover, .icon:hover, .btn--direction:hover {
+.card, .icon:hover, button {
     cursor: pointer;
+}
+
+.card--placeholder-active:hover {
+    cursor: auto;
+}
+
+.card-title {
+    background-color: #1a75ff;
+    text-align: left;
+    padding: 10px;
+    border-radius: 3px 3px 0px 0px;
+}
+
+.card-content {
+    text-align: left;
+    padding: 10px;
+}
+
+input {
+    display: block;
+    padding: 2px;
+}
+
+textarea {
+    display: block;
+    height: 4em;
+    resize: none;
+    padding: 2px;
+}
+
+.card-title input, .card-content textarea {
+    border: none;
+    width: 98%;
+}
+
+.card--placeholder input, .card--placeholder textarea {
+    width: 90%;
+    border: grey solid 1px;
+    margin: 5px auto;
+}
+
+button {
+    background-color: green;
+    width: 30%;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px;
+    margin: 5px;
 }

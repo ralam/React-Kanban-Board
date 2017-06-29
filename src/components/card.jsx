@@ -77,18 +77,17 @@ class Card extends React.Component{
   render() {
     const { connectDragSource, isDragging, connectDropTarget } = this.props;
     if(this.state.editable) {
-      return connectDragSource(
+      return(
         <div className='card'>
-          <input
+          <div className='card-title'><input
             type='text'
             value={this.state.title}
             onChange={this.handleUpdate.bind(null, 'title')}
-            />
-          <input
-            type='text'
+            /></div>
+          <div className='card-content'><textarea
             value={this.state.description}
             onChange={this.handleUpdate.bind(null, 'description')}
-            />
+            /></div>
           <button onClick={this.saveCard}>Save</button>
           <button onClick={this.toggleEditable}>Cancel</button>
         </div>
@@ -97,11 +96,11 @@ class Card extends React.Component{
       return connectDragSource(connectDropTarget(
         <div className='card'>
           <div className='card-icon-container'>
-            <div className='icon' onClick={this.deleteCard}>x</div>
-            <div className='icon' onClick={this.toggleEditable}>e</div>
+            <div className='icon icon--delete' onClick={this.deleteCard}></div>
+            <div className='icon icon--edit' onClick={this.toggleEditable}></div>
           </div>
-          <div>{this.props.title}</div>
-          <div>{this.props.description}</div>
+          <div className='card-title'>{this.props.title}</div>
+          <div className='card-content'>{this.props.description}</div>
         </div>
       ));
     }

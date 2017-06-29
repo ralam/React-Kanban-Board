@@ -78,8 +78,10 @@ class Board extends React.Component{
     })
     return(
       <div className='board'>
-        <h1>{this.state.title}</h1>
-        <div className='box'>
+        <div className='header'>
+          <h1>{this.state.title}</h1>
+        </div>
+        <div className='content'>
           <div className='lane-container'>
             {lanes}
           </div>
