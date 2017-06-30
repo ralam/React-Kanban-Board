@@ -1,1 +1,1 @@
-Trello board clone made with React and React-dnd. [Live demo](https://ralam.github.io/react-trello-clone/).
+Trello-inspired board made with React and React-dnd. [Live demo](https://ralam.github.io/React-Kanban-Board/). Currently has create/edit/delete and drag and drop functionality for cards.
