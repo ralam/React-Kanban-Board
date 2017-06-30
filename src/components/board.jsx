@@ -11,7 +11,8 @@ class Board extends React.Component{
       statuses: [
         {title: 'Planned', cards: [
           {title: 'Expand the deck', description: 'Add a new section to the deck to make room for a grill and hammock.'},
-          {title: 'Plant new shrubs', description: 'Plant new shrubs by the fence.'}
+          {title: 'Plant new shrubs', description: 'Plant new shrubs by the fence.'},
+          {title: 'Plant mango tree', description: 'Obtain and plant young mango tree in garden.'}
         ]},
         {title: 'Design', cards: [
           {title: 'Plant a vegetable garden', description: '40 square feet with planters'},
