@@ -10,19 +10,19 @@ class Board extends React.Component{
       title: 'My Board',
       statuses: [
         {title: 'Planned', cards: [
-          {title: 'Card 1', description: 'some stuff'},
-          {title: 'Card 2', description: 'more stuff'}
+          {title: 'Expand the deck', description: 'Add a new section to the deck to make room for a grill and hammock.'},
+          {title: 'Plant new shrubs', description: 'Plant new shrubs by the fence.'}
         ]},
         {title: 'Design', cards: [
-          {title: 'Card 1', description: 'some stuff'},
-          {title: 'Card 2', description: 'more stuff'}
+          {title: 'Plant a vegetable garden', description: '40 square feet with planters'},
+          {title: 'Build a gazeebo', description: 'Octogonal, covered, lighted, with benches and a screen to keep out insects.'}
         ]},
-        {title: 'In Progress', cards: [{title: 'Card 3', description: 'lorem ipsum'}]},
-        {title: 'Testing', cards: [{title: 'Card 3', description: 'lorem ipsum'}]},
+        {title: 'In Progress', cards: [{title: 'Building a pool', description: '25 feet long, ranging from 3 to 5 feet deep, lighted and heated'}]},
+        {title: 'Testing', cards: [{title: 'Assemble deck chairs', description: 'Need to assemble 4 plastic deck chairs from the store.'}]},
         {title: 'Done', cards: [
-          {title: 'Card 4', description: 'bananas'},
-          {title: 'Card 5', description: 'oranges'},
-          {title: 'Card 6', description: 'apples'}
+          {title: 'Repair the fence', description: 'Fix the sections of the fence that fell over last winter.'},
+          {title: 'Build doghouse', description: 'Put together a large, waterproof doghouse for Fifo to sleep in. Should be close to door.'},
+          {title: 'Redo the roof', description: 'Replace old shingles on the roof.'}
         ]}
       ]
     }
