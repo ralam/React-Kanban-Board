@@ -22,6 +22,14 @@
     "webpack": "^2.6.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^12.1.2",
+    "babel-jest": "^27.5.1",
+    "jest": "^27.5.1",
+    "react-test-renderer": "^15.6.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
     "jest": "^27.5.1",
     "babel-jest": "^27.5.1",
     "react-test-renderer": "^15.6.1",
