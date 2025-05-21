@@ -26,13 +26,13 @@
     "@testing-library/react": "^12.1.2",
     "babel-jest": "^27.5.1",
     "jest": "^27.5.1",
+    "jest-environment-jsdom": "^27.5.1",
     "react-test-renderer": "^15.6.1"
   },
   "jest": {
-    "testEnvironment": "jsdom"
-    "jest": "^27.5.1",
-    "babel-jest": "^27.5.1",
-    "react-test-renderer": "^15.6.1",
-    "@testing-library/react": "^12.1.2"
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+    }
   }
 }
